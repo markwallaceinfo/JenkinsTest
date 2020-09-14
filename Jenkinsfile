@@ -1,14 +1,14 @@
-pipeline {
+ypipeline {
   agent any
   stages {
     stage('print') {
       steps {
-        echo '123'
+         git 'https://github.com/Dgotlieb/JenkinsTest.git'
       }
     }
     stage('print2') {
       steps {
-        echo '122222'
+        bat 'python 1.py'
       }
     }
   }
