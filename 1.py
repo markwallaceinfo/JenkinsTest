@@ -1,2 +1,1 @@
-print(25)
-x = 1
+print(2)
