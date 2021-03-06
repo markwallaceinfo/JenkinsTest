@@ -12,13 +12,28 @@ pipeline {
         stage('run python') {
             steps {
                 script {
-                    if (Boolean.valueOf(env.UNIX)) {
-                        sh 'python 1.py'
-                    } else {
+                    if (checkOs() == 'Windows') {
                         bat 'python 1.py'
+                    } else {
+                        sh 'python 1.py'
                     }
                 }
             }
         }
+    }
+}
+
+def checkOs(){
+    if (isUnix()) {
+        def uname = sh script: 'uname', returnStdout: true
+        if (uname.startsWith("Darwin")) {
+            return "Macos"
+        }
+        else {
+            return "Linux"
+        }
+    }
+    else {
+        return "Windows"
     }
 }
