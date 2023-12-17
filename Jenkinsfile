@@ -12,7 +12,7 @@ pipeline {
         stage('run python') {
             steps {
                 script {
-                    'python3 1.py'
+                    bat'python3 1.py'
                 }
             }
         }
